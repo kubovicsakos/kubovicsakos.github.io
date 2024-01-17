@@ -15,7 +15,7 @@ document.addEventListener("alpine:init", () => {
 
   Alpine.data("toast", () => ({
     visible: false,
-    delay: 5000,
+    delay: 2000 ,
     percent: 0,
     interval: null,
     timeout: null,
@@ -71,12 +71,12 @@ document.addEventListener("alpine:init", () => {
             1
           );
           this.$dispatch("notify", {
-            message: "The item was removed from your watchlist",
+            message: "Removed from watchlist",
           });
         } else {
           this.$store.header.watchingItems.push(product);
           this.$dispatch("notify", {
-            message: "The item was added into the watchlist",
+            message: "Added into the watchlist",
           });
         }
       },
@@ -91,13 +91,13 @@ document.addEventListener("alpine:init", () => {
         this.$store.header.cartItemsObject[id].quantity = 
         parseInt(this.$store.header.cartItemsObject[id].quantity) + parseInt(quantity);
         this.$dispatch("notify", {
-          message: "The item was added into the cart",
+          message: "Added into the cart",
         });
       },
       removeItemFromCart() {
         delete this.$store.header.cartItemsObject[this.id];
         this.$dispatch("notify", {
-          message: "The item was removed from cart",
+          message: "Removed from cart",
         });
       },
       removeFromWatchlist() {
@@ -114,7 +114,7 @@ document.addEventListener("alpine:init", () => {
     errorClasses:
       "border-red-600 focus:border-red-600 ring-1 ring-red-600 focus:ring-red-600",
     successClasses:
-      "border-emerald-500 focus:border-emerald-500 ring-1 ring-emerald-500 focus:ring-emerald-500",
+      "border-amber-500 focus:border-amber-500 ring-1 ring-amber-500 focus:ring-amber-500",
 
     form: {
       name: "",

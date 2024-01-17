@@ -248,10 +248,8 @@
       </div>
       <!--/ Responsive Menu -->
       <nav class="hidden md:block">
-      </nav>
-      <nav class="hidden md:block">
         <ul class="grid grid-flow-col items-center">
-          <li>
+          <li class="pr-2">
             <a
               href="/src/cart.html"
               class="relative inline-flex items-center py-navbar-item px-navbar-item hover:bg-slate-900"
@@ -276,7 +274,7 @@
                 x-transition
                 x-cloak
                 x-text="$store.header.cartItems"
-                class="absolute z-[100] top-4 -right-3 py-[2px] px-[8px] rounded-full bg-red-500"
+                class="absolute z-[100] top-6 -right-3 py-[4px] px-[8px] rounded-full bg-red-500"
               ></small>
             </a>
           </li>
@@ -487,13 +485,13 @@
             title: 'Mouse',
             price: 17.99
           })"
-          class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white"
+          class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
         >
           <a href="/src/product.html" class="block overflow-hidden">
             <img
               src="/src/img/1_1.jpg"
               alt=""
-              class="rounded-lg hover:scale-105 hover:rotate-1 transition-transform"
+              class="hover:scale-105 transition-transform"
             />
           </a>
           <div class="p-4">
@@ -507,7 +505,7 @@
           <div class="flex justify-between py-3 px-4">
             <button
               @click="addToWatchlist()"
-              class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center hover:bg-amber-600 hover:text-white active:bg-amber-800 transition-colors"
+              class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
               :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
             >
               <svg
@@ -539,13 +537,13 @@
            title: 'Keyboard',
            price: 39.99
          })"
-         class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white"
+         class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
        >
          <a href="/src/product_2.html" class="block overflow-hidden">
            <img
              src="/src/img/2_1.jpg"
              alt=""
-             class="rounded-lg hover:scale-105 hover:rotate-1 transition-transform"
+             class="hover:scale-105 transition-transform"
            />
          </a>
          <div class="p-4">
@@ -559,7 +557,7 @@
          <div class="flex justify-between py-3 px-4">
            <button
              @click="addToWatchlist()"
-             class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center hover:bg-amber-600 hover:text-white active:bg-amber-800 transition-colors"
+             class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
              :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
            >
              <svg
@@ -583,24 +581,140 @@
          </div>
        </div>
        <!--/ Product Item -->
-
-        <!-- TODO: valamiért mobile view nem jól működik a watchlist gomb -->
-      <!--/ Product List -->
-    </main>
-
-    <!-- Toast -->
-    <div
-      x-data="toast"
-      x-show="visible"
-      x-transition
-      x-cloak
-      @notify.window="show($event.detail.message)"
-      class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-amber-500 text-white"
+       <!-- Product Item -->
+       <div
+       x-data="productItem({
+         id: 1, 
+         image: 'img/1_1.jpg', 
+         title: 'Mouse',
+         price: 17.99
+       })"
+       class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+     >
+       <a href="/src/product.html" class="block overflow-hidden">
+         <img
+           src="/src/img/1_1.jpg"
+           alt=""
+           class="hover:scale-105 transition-transform"
+         />
+       </a>
+       <div class="p-4">
+         <h3 class="text-lg">
+           <a href="/src/product.html">
+             Mouse
+           </a>
+         </h3>
+         <h5 class="font-bold">$17.99</h5>
+       </div>
+       <div class="flex justify-between py-3 px-4">
+         <button
+           @click="addToWatchlist()"
+           class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+           :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+         >
+           <svg
+             xmlns="http://www.w3.org/2000/svg"
+             class="h-6 w-6"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor"
+             stroke-width="2"
+           >
+             <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+             />
+           </svg>
+         </button>
+         <button class="btn-primary" @click="addToCart(id)">
+           Add to Cart
+         </button>
+       </div>
+     </div>
+     <!--/ Product Item -->
+      <!-- Product Item -->
+      <div
+      x-data="productItem({
+        id: 2, 
+        image: 'img/2_1.jpg', 
+        title: 'Keyboard',
+        price: 39.99
+      })"
+      class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
     >
-      <div class="font-semibold" x-text="message"></div>
+      <a href="/src/product_2.html" class="block overflow-hidden">
+        <img
+          src="/src/img/2_1.jpg"
+          alt=""
+          class="hover:scale-105 transition-transform"
+        />
+      </a>
+      <div class="p-4">
+        <h3 class="text-lg">
+          <a href="/src/product_2.html">
+             Keyboard
+          </a>
+        </h3>
+        <h5 class="font-bold">$39.99</h5>
+      </div>
+      <div class="flex justify-between py-3 px-4">
+        <button
+          @click="addToWatchlist()"
+          class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+          :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            />
+          </svg>
+        </button>
+        <button class="btn-primary" @click="addToCart(id)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+    <!--/ Product Item -->
+    <!-- Product Item -->
+    <div
+    x-data="productItem({
+      id: 1, 
+      image: 'img/1_1.jpg', 
+      title: 'Mouse',
+      price: 17.99
+    })"
+    class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+  >
+    <a href="/src/product.html" class="block overflow-hidden">
+      <img
+        src="/src/img/1_1.jpg"
+        alt=""
+        class="hover:scale-105 transition-transform"
+      />
+    </a>
+    <div class="p-4">
+      <h3 class="text-lg">
+        <a href="/src/product.html">
+          Mouse
+        </a>
+      </h3>
+      <h5 class="font-bold">$17.99</h5>
+    </div>
+    <div class="flex justify-between py-3 px-4">
       <button
-        @click="close"
-        class="absolute flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+        @click="addToWatchlist()"
+        class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+        :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -613,18 +727,316 @@
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
           />
         </svg>
       </button>
-      <!-- Progress -->
-      <div>
-        <div
-          class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
-          :style="{'width': `${percent}%`}"
-        ></div>
-      </div>
+      <button class="btn-primary" @click="addToCart(id)">
+        Add to Cart
+      </button>
     </div>
-    <!--/ Toast -->
+  </div>
+  <!--/ Product Item -->
+   <!-- Product Item -->
+   <div
+   x-data="productItem({
+     id: 2, 
+     image: 'img/2_1.jpg', 
+     title: 'Keyboard',
+     price: 39.99
+   })"
+   class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+ >
+   <a href="/src/product_2.html" class="block overflow-hidden">
+     <img
+       src="/src/img/2_1.jpg"
+       alt=""
+       class="hover:scale-105 transition-transform"
+     />
+   </a>
+   <div class="p-4">
+     <h3 class="text-lg">
+       <a href="/src/product_2.html">
+          Keyboard
+       </a>
+     </h3>
+     <h5 class="font-bold">$39.99</h5>
+   </div>
+   <div class="flex justify-between py-3 px-4">
+     <button
+       @click="addToWatchlist()"
+       class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+       :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+     >
+       <svg
+         xmlns="http://www.w3.org/2000/svg"
+         class="h-6 w-6"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke="currentColor"
+         stroke-width="2"
+       >
+         <path
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+         />
+       </svg>
+     </button>
+     <button class="btn-primary" @click="addToCart(id)">
+       Add to Cart
+     </button>
+   </div>
+ </div>
+ <!--/ Product Item -->
+ <!-- Product Item -->
+ <div
+ x-data="productItem({
+   id: 1, 
+   image: 'img/1_1.jpg', 
+   title: 'Mouse',
+   price: 17.99
+ })"
+ class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+>
+ <a href="/src/product.html" class="block overflow-hidden">
+   <img
+     src="/src/img/1_1.jpg"
+     alt=""
+     class="hover:scale-105 transition-transform"
+   />
+ </a>
+ <div class="p-4">
+   <h3 class="text-lg">
+     <a href="/src/product.html">
+       Mouse
+     </a>
+   </h3>
+   <h5 class="font-bold">$17.99</h5>
+ </div>
+ <div class="flex justify-between py-3 px-4">
+   <button
+     @click="addToWatchlist()"
+     class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+     :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+   >
+     <svg
+       xmlns="http://www.w3.org/2000/svg"
+       class="h-6 w-6"
+       fill="none"
+       viewBox="0 0 24 24"
+       stroke="currentColor"
+       stroke-width="2"
+     >
+       <path
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+       />
+     </svg>
+   </button>
+   <button class="btn-primary" @click="addToCart(id)">
+     Add to Cart
+   </button>
+ </div>
+</div>
+<!--/ Product Item -->
+<!-- Product Item -->
+<div
+x-data="productItem({
+  id: 2, 
+  image: 'img/2_1.jpg', 
+  title: 'Keyboard',
+  price: 39.99
+})"
+class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+>
+<a href="/src/product_2.html" class="block overflow-hidden">
+  <img
+    src="/src/img/2_1.jpg"
+    alt=""
+    class="hover:scale-105 transition-transform"
+  />
+</a>
+<div class="p-4">
+  <h3 class="text-lg">
+    <a href="/src/product_2.html">
+       Keyboard
+    </a>
+  </h3>
+  <h5 class="font-bold">$39.99</h5>
+</div>
+<div class="flex justify-between py-3 px-4">
+  <button
+    @click="addToWatchlist()"
+    class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+    :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
+    </svg>
+  </button>
+  <button class="btn-primary" @click="addToCart(id)">
+    Add to Cart
+  </button>
+</div>
+</div>
+<!--/ Product Item -->
+<!-- Product Item -->
+<div
+x-data="productItem({
+  id: 1, 
+  image: 'img/1_1.jpg', 
+  title: 'Mouse',
+  price: 17.99
+})"
+class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+>
+<a href="/src/product.html" class="block overflow-hidden">
+  <img
+    src="/src/img/1_1.jpg"
+    alt=""
+    class="hover:scale-105 transition-transform"
+  />
+</a>
+<div class="p-4">
+  <h3 class="text-lg">
+    <a href="/src/product.html">
+      Mouse
+    </a>
+  </h3>
+  <h5 class="font-bold">$17.99</h5>
+</div>
+<div class="flex justify-between py-3 px-4">
+  <button
+    @click="addToWatchlist()"
+    class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+    :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
+    </svg>
+  </button>
+  <button class="btn-primary" @click="addToCart(id)">
+    Add to Cart
+  </button>
+</div>
+</div>
+<!--/ Product Item -->
+<!-- Product Item -->
+<div
+x-data="productItem({
+ id: 2, 
+ image: 'img/2_1.jpg', 
+ title: 'Keyboard',
+ price: 39.99
+})"
+class="border border-1 border-gray-200 rounded-md hover:border-amber-600 transition-colors bg-white overflow-hidden"
+>
+<a href="/src/product_2.html" class="block overflow-hidden">
+ <img
+   src="/src/img/2_1.jpg"
+   alt=""
+   class="hover:scale-105 transition-transform"
+ />
+</a>
+<div class="p-4">
+ <h3 class="text-lg">
+   <a href="/src/product_2.html">
+      Keyboard
+   </a>
+ </h3>
+ <h5 class="font-bold">$39.99</h5>
+</div>
+<div class="flex justify-between py-3 px-4">
+ <button
+   @click="addToWatchlist()"
+   class="w-10 h-10 rounded-full border border-1 border-amber-600 flex items-center justify-center active:bg-amber-600 transition-colors"
+   :class="isInWatchlist(id) ? 'bg-amber-600 text-white' : 'text-amber-600'"
+ >
+   <svg
+     xmlns="http://www.w3.org/2000/svg"
+     class="h-6 w-6"
+     fill="none"
+     viewBox="0 0 24 24"
+     stroke="currentColor"
+     stroke-width="2"
+   >
+     <path
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+     />
+   </svg>
+ </button>
+ <button class="btn-primary" @click="addToCart(id)">
+   Add to Cart
+ </button>
+</div>
+</div>
+<!--/ Product Item -->
+
+        <!-- TODO: valamiért mobile view nem jól működik a watchlist gomb
+        Orders delete or make it good
+      Mobile view ronda megoldani
+    Mobile side menu side click out  -->
+      <!--/ Product List -->
+    </main>
+
+    <div class="flex justify-center md:hidden">
+      <!-- Toast -->
+      <div
+        x-data="toast"
+        x-show="visible"
+        x-transition
+        x-cloak
+        @notify.window="show($event.detail.message)"
+        class="fixed w-[75%] top-1 py-2 px-4 pb-4 bg-amber-500 text-white"
+      >
+        <div class="font-semibold" x-text="message"></div>
+        <button
+          @click="close"
+          class="absolute flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <!--/ Toast -->
+    </div>
   </body>
 </html>

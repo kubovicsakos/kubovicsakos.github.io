@@ -392,7 +392,7 @@
     </header>
 
     <main class="p-5">
-      <form action="" method="post" class="w-[400px] mx-auto p-6 my-16">
+      <form action="" method="post" class="flex-col justify-center md:w-[30%] w-[80%] md:mx-auto mx-auto p-6 my-16">
         <h2 class="text-2xl font-semibold text-center mb-5">
           Login to your account
         </h2>
@@ -400,7 +400,7 @@
           or
           <a
             href="/src/signup.html"
-            class="text-sm text-amber-700 hover:text-amber-600"
+            class="text-sm font-bold text-amber-700 hover:text-amber-600"
             >create new account</a
           >
         </p>
@@ -430,14 +430,16 @@
               type="checkbox"
               class="mr-3 rounded border-gray-300 text-amber-500 focus:ring-amber-500"
             />
-            <label for="loginRememberMe">Remember Me</label>
+            <label class="text-sm" for="loginRememberMe">Remember Me</label>
           </div>
-          <a href="/src/password-reset.html" class="text-sm text-amber-700 hover:text-amber-600">Forgot Password?</a>
+          
         </div>
-        
+        <div class="flex text-center">
           <a class="btn-primary bg-amber-500 hover:bg-amber-600 active:bg-amber-700 w-full"  href="/src/index.html">
             Login
           </a>
+        </div>
+        <a href="/src/password-reset.html" class="pt-4 text-sm text-amber-700 hover:text-amber-600">Forgot Password?</a>
       </form>
     </main>
   </body>
